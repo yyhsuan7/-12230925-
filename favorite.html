@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>直角文字排版示範</title>
+  <link rel="stylesheet" href="favorite.css">
+  <style>
+    /* LOGO 與導覽列樣式 */
+    .sidebar {
+      position: fixed;
+      top: 20px; /* 與頁面頂部的距離 */
+      left: 20px; /* 與頁面左側的距離 */
+      z-index: 10;
+      display: flex;
+      flex-direction: column; /* 垂直排列 */
+      align-items: flex-start;
+      gap: 20px; /* 項目間距 */
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 20px; /* LOGO 與導覽列的間距 */
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-bottom: 15px; /* 每個項目之間的間距 */
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333; /* 項目字體顏色 */
+      font-size: 18px; /* 字體大小 */
+      font-weight: bold; /* 粗體字 */
+      transition: color 0.3s ease; /* 滑鼠懸停時的動畫效果 */
+    }
+
+    nav ul li a:hover {
+      color: #007BFF; /* 滑鼠懸停時的字體顏色 */
+    }
+  </style>
+</head>
+<body>
+  <!-- LOGO 與導覽列 -->
+  <div class="sidebar">
+    <!-- LOGO 圖片 -->
+    <a href="index.html">
+      <img src="IMAGE/螢幕截圖 2025-12-17 上午12.56.30.png" alt="MY LOGO" style="height: 100px; vertical-align: middle; margin-right: 100px;"class="logo">
+    </a>
+    <!-- 導覽列 -->
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="ABOUT.HTML">我</a></li>
+        <li><a href="gallery.html">的作品</a></li>
+        <li><a href="favorite.html">和興趣</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
+    <!-- 替換圖片路徑為 S__120373277.jpg -->
+    <img class="container__img" src="./image/10819.jpg" alt="img" />
+    <p class="container__text top-right">
+      <span class="horizontal">我的興趣是打遊戲，也喜歡吃美食</span>
+      <span class="corner"></span>
+      <span class="vertical">不論是中式或西式</span>
+    </p>
+    <div class="container__text bottom-left">
+      <span class="vertical">我也熱愛打籃球</span>
+      <span class="corner">，</span>
+      <span class="horizontal">我喜歡籃球團隊合作、熱血、競爭的感覺</span>
+    </div>
+  </div>
+
+  
+</body>
+</html>
+
+

@@ -1,0 +1,124 @@
+:root {
+    --border: 1px solid;
+    --font-size: min(2.5vw, 56px);
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 讓 body 高度填滿螢幕 */
+  }
+  
+  .container {
+    position: relative;
+    width: 60vw;
+    font-size: var(--font-size);
+  }
+  
+  .container__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container__text {
+    position: absolute;
+    display: grid;
+  }
+  
+  .container__text.top-right {
+    top: calc(-1 * var(--font-size));
+    right: calc(-1 * var(--font-size));
+    grid-template-areas:
+      'horizontal corner'
+      'empty vertical';
+    animation: ani-text-top-right 4s infinite alternate;
+  }
+  
+  .container__text.bottom-left {
+    bottom: calc(-1 * var(--font-size));
+    left: calc(-1 * var(--font-size));
+    grid-template-areas:
+      'vertical empty'
+      'corner horizontal';
+    animation: ani-text-bottom-left 4s infinite alternate;
+  }
+  
+  .horizontal {
+    grid-area: horizontal;
+    padding-left: 8px;
+    border-block: var(--border);
+    border-left: var(--border);
+  }
+  
+  .corner {
+    grid-area: corner;
+    display: grid;
+    place-content: center;
+    border-top: var(--border);
+    border-right: var(--border);
+  }
+  
+  .vertical {
+    grid-area: vertical;
+    writing-mode: vertical-lr;
+    padding-bottom: 8px;
+    border-block: var(--border);
+    border-bottom: var(--border);
+  }
+  
+  .bottom-left .vertical {
+    padding-top: 8px;
+    border-block: var(--border);
+    border-top: var(--border);
+  }
+  
+  .bottom-left .corner {
+    border-bottom: var(--border);
+    border-left: var(--border);
+  }
+  
+  .bottom-left .horizontal {
+    padding-right: 8px;
+    border-block: var(--border);
+    border-right: var(--border);
+  }
+  
+  @keyframes ani-text-top-right {
+    0%, 25% {
+      clip-path: circle(0 at 0 0);
+    }
+    75%, 100% {
+      clip-path: circle(120% at 100% 0%);
+    }
+  }
+  
+  @keyframes ani-text-bottom-left {
+    0%, 25% {
+      clip-path: circle(0 at 0 0);
+    }
+    75%, 100% {
+      clip-path: circle(120% at 0 100%);
+    }
+  }
+  
+  @keyframes ani-img {
+    0%, 10% {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    50%, 100% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  .container {
+    position: relative;
+    width: 50vw;  /* 設定容器寬度為螢幕寬度的一半 */
+    height: 40vw;  /* 設定容器高度為螢幕寬度的 40% */
+    font-size: var(--font-size);
+  }
+    

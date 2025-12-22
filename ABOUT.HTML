@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12230925 商設三甲 丁俊煒</title>
+
+  <style>
+    /* ======================
+       CSS RESET
+    ====================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #777;
+      overflow-x: hidden;
+    }
+
+    /* ======================
+       背景線條動畫
+    ====================== */
+    .line {
+      position: fixed;
+      top: 0;
+      width: 1px;
+      height: 100vh;
+      background: rgba(255,255,255,0.1);
+      z-index: 0;
+    }
+
+    .line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,37,190,0.8)
+      );
+      animation: fall var(--ani-duration) var(--ani-delay) linear infinite;
+    }
+
+    @keyframes fall {
+      from { top: -100px; }
+      to   { top: 100%; }
+    }
+
+    /* ======================
+       NAV
+    ====================== */
+    nav {
+      position: relative;
+      z-index: 2;
+      background: rgba(0,0,0,0.85);
+    }
+
+    .header {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #111;
+      border-radius: 6px;
+    }
+
+    /* ======================
+       HERO
+    ====================== */
+    .hero {
+      min-height: 60vh;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slogan h1 {
+      font-size: 64px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 40px;
+      border: 3px solid #fff;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 24px;
+      transition: all 0.3s;
+    }
+
+    .button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ======================
+       CARD
+    ====================== */
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 100px 0;
+    }
+
+    .card {
+      --circle-radius: 60px;
+      width: 400px;
+      min-height: 460px;
+      background: #fff;
+      border-radius: var(--circle-radius);
+      overflow: hidden;
+      margin: auto;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card__img {
+      position: relative;
+      height: 400px;
+      filter: blur(24px);
+      transition: filter 0.4s;
+    }
+
+    .card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card:hover .card__img {
+      filter: blur(0);
+    }
+
+    /* S 曲線 */
+    .card__img::before {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: #fff;
+      border-radius: 60px 60px 0 0;
+      z-index: 1;
+    }
+
+    .card__img::after {
+      content: "";
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      box-shadow: 60px 60px 0 #fff;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .card__content {
+      position: relative;
+      bottom: 30px;
+      margin: 0 40px;
+      display: grid;
+      grid-template-rows: min-content 0fr;
+      transition: grid-template-rows 0.4s;
+    }
+
+    .card:hover .card__content {
+      grid-template-rows: min-content 1fr;
+    }
+
+    .card__content__heading {
+      font-size: 24px;
+      font-weight: bold;
+      color: #777;
+    }
+
+    .card__content__subheading {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .card__content__text {
+      opacity: 0;
+      position: relative;
+      top: 50px;
+      padding: 20px;
+      border-radius: 20px;
+      background: transparent;
+      box-shadow: 0 0 0 30px rgba(255,255,255,0.8);
+      transition: opacity 0.4s, top 0.4s;
+    }
+
+    .card:hover .card__content__text {
+      opacity: 1;
+      top: 0;
+    }
+
+    .scroll-box {
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #777;
+    }
+
+    /* ======================
+       FOOTER
+    ====================== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 背景線 -->
+  <script>
+    const lineCount = 20;
+    for (let i = 0; i < lineCount; i++) {
+      const line = document.createElement("div");
+      line.className = "line";
+      line.style.left = `${(i * 100) / lineCount}%`;
+      line.style.setProperty("--ani-duration", 6 + Math.random() * 6 + "s");
+      line.style.setProperty("--ani-delay", -Math.random() * 10 + "s");
+      document.body.appendChild(line);
+    }
+  </script>
+
+  <!-- NAV -->
+  <nav>
+    <div class="header">
+      <div class="logo">
+        <a href="index.html">
+          <img src="image/螢幕截圖 2025-12-17 上午12.56.30.png" alt="MY LOGO">
+        </a>
+      </div>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="ABOUT.html">我</a></li>
+        <li><a href="gallery.html">的作品</a></li>
+        <li><a href="favorite.html">和興趣</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="slogan">
+      <h1>WELCOME</h1>
+      <a href="#about" class="button">ENTER</a>
+    </div>
+  </section>
+
+  <!-- CARD -->
+  <section class="container" id="about">
+    <div class="card">
+      <div class="card__img">
+        <img src="image/34A516E8-2CCD-4B6A-A7C6-7295C5E0E15C.JPG" alt="丁俊煒">
+      </div>
+      <div class="card__content">
+        <h2 class="card__content__heading">丁俊煒</h2>
+        <p class="card__content__subheading"> 我是香港人</p>
+        <div class="card__content__text">
+          <div class="scroll-box">
+            我是丁俊煒，就讀桃園銘傳大學商業設計系。
+            生日 1/30，水瓶座，MBTI：INFJ。
+            個性隨和、不喜歡爭執，對陌生人內向，
+            跟朋友在一起卻很瘋。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 丁俊煒
+  </footer>
+
+</body>
+</html>

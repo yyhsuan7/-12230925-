@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<nav>
+    <!-- LOGO 和網站名稱 -->
+    <p>
+        <a href="index.html">
+            <!-- 新增 LOGO -->
+            <img src="IMAGE/螢幕截圖 2025-12-17 上午12.56.30.png" alt="MY LOGO" style="height: 100px; vertical-align: middle; margin-right: 100px;">
+        </a>
+    </p>
+    <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="ABOUT.HTML">我</a></li>
+        <li><a href="gallery.html">的作品</a></li>
+        <li>
+            <a href="favorite.html">和興趣</a>
+
+</nav>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation with Background Effect</title>
+    <style>
+        /* 背景效果相關樣式 */
+        body {
+            margin: 0;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            color: white;
+        }
+
+        .line {
+            position: absolute;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 100vh;
+            z-index: 0;
+        }
+
+        .line::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 37, 190, 0.8));
+            animation: fall var(--ani-duration) var(--ani-delay) linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -100px;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        /* 頁面結構相關樣式 */
+        nav {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+        }
+
+        nav p a {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            list-style: none;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: grid;
+            place-content: center;
+            text-align: center;
+        }
+
+        .slogan h1 {
+            font-size: 4rem;
+        }
+
+        .slogan .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #cb49fb;
+            color: black;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 30px; /* 圓角設定 */
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .slogan .button:hover {
+            background: #e065ff;
+            transform: scale(1.1); /* 當滑鼠懸停時放大效果 */
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="slogan">
+            <h1>歡迎來到我的作品集網站</h1>
+            <a class="Entrance" href="P1.HTML">
+                <div class="button">Enter</div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        銘傳大學 商業設計系
+    </footer>
+
+    <script>
+        const lineCount = 20;
+
+        for (let i = 1; i <= lineCount; i++) {
+            const line = document.createElement("div");
+            line.classList.add("line");
+            line.style.setProperty(
+                "left",
+                `${i * (100 / lineCount) + Math.random() * 5 - 5}%`
+            );
+            line.style.setProperty("--ani-duration", 8 + Math.random() * 10 + "s");
+            line.style.setProperty("--ani-delay", -Math.random() * 10 + "s");
+            document.body.appendChild(line);
+        }
+    </script>
+</body>
+
+
+
+</html>
+

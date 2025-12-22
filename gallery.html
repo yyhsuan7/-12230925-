@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12230925 商設三甲  丁俊煒</title>
+  <link rel="stylesheet" type="text/css" href="css/gallery.css">
+
+  <style> 
+    body {
+      margin: 0;
+      background-color: black;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      color: #888;
+    }
+
+    .line {
+      position: absolute;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.1);
+      height: 100vh;
+      z-index: 0;
+    }
+
+    .line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 37, 190, 0.8));
+      animation: fall var(--ani-duration) var(--ani-delay) linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -100px;
+      }
+
+      100% {
+        top: 100%;
+      }
+    }
+
+    .image-numbered img {
+      border: 2px solid #ccc;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-numbered img:hover {
+      transform: scale(1.05);
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      transition: transform 0.3s ease;
+    }
+
+    .overlay.active {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <p>
+        <!-- LOGO 圖片 -->
+       
+  <!-- Navigation Bar -->
+
+  <nav>
+    <p>
+      <!-- LOGO 圖片 -->
+      <a href="index.html">
+        <img src="IMAGE/螢幕截圖 2025-12-17 上午12.56.30.png" alt="MY LOGO" style="height: 100px; vertical-align: middle; margin-right: 100px;"class="logo">
+      </a>
+    </p>
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="ABOUT.HTML">我</a></li>
+      <li><a href="gallery.html">的作品</a></li>
+      <li><a href="favorite.html">和興趣</a></li>
+    </ul>
+  </nav>
+  
+  
+  </nav>
+
+  <div class="banner">
+    <div class="title">
+      <h1>作品</h1>
+    </div>
+  </div>
+
+  <div class="image-row">
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-5 2_page-0001.JPG" alt="Image 1">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-2_page-0001.jpg" alt="Image 2">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-3 2 2_page-0001.jpg" alt="Image 3">
+      </div>
+    </div>
+  
+    <div class="image-row">
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-4_page-0001.jpg" alt="Image 1">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/62085176-B941-4DCC-A5A6-2C3449EE3D03.jpg" alt="Image 2">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-5 3_page-0001.jpg" alt="Image 3">
+      </div>
+    </div>
+  
+    <div class="image-row">
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/未命名-8副本_page-0001.jpg" alt="Image 1">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/螢幕截圖 2024-11-03 下午10.31.03.png" alt="Image 2">
+      </div>
+      <div class="image-numbered" onclick="showOverlay(this)">
+        <img src="IMAGE/jj_page-0001副本.jpg" alt="Image 3">
+      </div>
+    </div>
+  
+  
+
+  <!-- 放大圖片的遮罩 -->
+  <div class="overlay" onclick="hideOverlay()">
+    <img src="" alt="Enlarged Image">
+  </div>
+
+  <script>
+    const overlay = document.querySelector('.overlay');
+    const overlayImage = overlay.querySelector('img');
+
+    function showOverlay(element) {
+      const imgSrc = element.querySelector('img').src;
+      overlayImage.src = imgSrc;
+      overlay.classList.add('active');
+    }
+
+    function hideOverlay() {
+      overlay.classList.remove('active');
+    }
+
+    window.addEventListener('scroll', () => {
+      if (overlay.classList.contains('active')) {
+        overlayImage.style.transform = `translateY(${window.scrollY}px)`;
+      }
+    });
+  </script>
+
+  <footer>
+    商業設計系 丁俊煒
+  </footer>
+</body>
+
+</html>
+
